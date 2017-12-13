@@ -97,7 +97,7 @@ class MultilingualModel(models.Model):
             return self.__dict__[attr]
 
         # See whether we can find a translation for the field
-        translated_fields = self.translations.model._meta.get_all_field_names()
+        translated_fields = [f.name for f in self.translations.model._meta.get_fields()]
         for field in translated_fields:
             code = None
 
